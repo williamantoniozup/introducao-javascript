@@ -24,3 +24,5 @@ console.log(paciente); // tr
 console.log(tdpeso); //td que contem peso
 console.log(peso);
 console.log(altura);
+
+teste
