@@ -5,7 +5,6 @@ var titulo = document.querySelector(".titulo");
 // console.log(titulo.textContent);
 titulo.textContent = "Aparecidade Sumiu";
 
-
 var paciente = document.querySelector("#primeiro-paciente");
 var pacientes = document.querySelectorAll(".paciente");
 
@@ -44,13 +43,69 @@ for (i = 0; i < pacientes.length; i++) {
     }
 
 }
-
 console.log(paciente); // tr
 console.log(tdpeso); //td que contem peso
 console.log(peso);
 console.log(altura);
-
-
-
-
 console.log("Tamanho do meu array de paciente: " + pacientes.length);
+
+var botaoAdicionar = document.querySelector("#adicionar-paciente");
+botaoAdicionar.addEventListener("click",function(event){
+    event.preventDefault(); //função que previni o comportamento padrão que é o de recarregar a pag.
+    //ao inves disso imprime uma mensagem na tela
+    // console.log("Oi eu sou o botao");
+    var form = document.querySelector("#form-adiciona");
+
+    // pegando o conteudo dos inputs;
+    var nomeForm = form.nome.value;
+    var pesoForm = form.peso.value;
+    var alturaForm = form.altura.value;
+    var gorduraForm = form.gordura.value
+
+    // console.log(nomeForm);
+    // console.log(pesoForm);
+    // console.log(alturaForm);
+    // console.log(gorduraForm);
+
+    var pacienteTr = document.createElement("tr"); //criando uma tr dentro do html
+
+    var nomeTd = document.createElement("td"); // crianndo as TDs
+    var pesoTd = document.createElement("td");
+    var alturaTd = document.createElement("td");
+    var gorduraTd = document.createElement("td");
+    var imcTd = document.createElement("td");
+
+    //passando os valores do input para cada td
+    nomeTd.textContent = nomeForm;
+    pesoTd.textContent = pesoForm;
+    alturaTd.textContent = alturaForm;
+    gorduraTd.textContent = gorduraForm;
+
+    // função para colocar cada uma dessas TD's como filho da TR paciente;
+
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+
+
+});
+
+
+// função anonima
+titulo.addEventListener("click", function(){
+    console.log("Olha só posso chamar uma função anonima!")
+});
+
+// titulo.addEventListener("click", mostraMensagem);
+
+// function mostraMensagem() {
+//     console.log("olá, eu fui clicado");
+// }
+
+
+
+
