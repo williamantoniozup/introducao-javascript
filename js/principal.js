@@ -27,10 +27,15 @@ for (i = 0; i < pacientes.length; i++) {
     if (peso <= 0 || peso >= 1000) {
         pesoEhValido = false;
         tdImc.textContent = "Peso Inválido";
+        // paciente.style.color = "red";
+        // paciente.style.backgroundColor = "lightcoral";
+        paciente.classList.add("paciente-invalido");
     }
+
     if (altura <= 0 || altura >= 3.00) {
         alturaEhValido = false;
         tdImc.textContent = "Altura Inválida!";
+        paciente.classList.add("paciente-invalido");  //adicionando style em algum elemento
     }
 
     if (pesoEhValido == true && alturaEhValido == true) {
