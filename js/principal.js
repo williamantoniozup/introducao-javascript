@@ -7,22 +7,45 @@ titulo.textContent = "Aparecidade Sumiu";
 
 
 var paciente = document.querySelector("#primeiro-paciente");
-var tdpeso = paciente.querySelector(".info-peso");
-var tdaltura = paciente.querySelector(".info-altura");
+var pacientes = document.querySelectorAll(".paciente");
 
 
-var peso = tdpeso.textContent;
-var altura = tdaltura.textContent;
+for (i = 0; i < pacientes.length; i++) {
 
-var imc = peso/(altura*altura);
+    paciente = pacientes[i];
 
-var tdImc = paciente.querySelector(".info-imc");
+    var tdpeso = paciente.querySelector(".info-peso");
+    var tdaltura = paciente.querySelector(".info-altura");
+    var tdImc = paciente.querySelector(".info-imc");
 
-tdImc.textContent = imc;
+    var peso = tdpeso.textContent;
+    var altura = tdaltura.textContent;
+
+    var pesoEhValido = true;
+    var alturaEhValido = true;
+
+    if (peso <= 0 || peso >= 1000) {
+        pesoEhValido = false;
+        tdImc.textContent = "Peso Inválido";
+    }
+    if (altura <= 0 || altura >= 3.00) {
+        alturaEhValido = false;
+        tdImc.textContent = "Altura Inválida!";
+    }
+
+    if (pesoEhValido == true && alturaEhValido == true) {
+        var imc = peso / (altura * altura);
+        tdImc.textContent = imc.toFixed(2);
+    }
+
+}
 
 console.log(paciente); // tr
 console.log(tdpeso); //td que contem peso
 console.log(peso);
 console.log(altura);
 
-teste
+
+
+
+console.log("Tamanho do meu array de paciente: " + pacientes.length);
