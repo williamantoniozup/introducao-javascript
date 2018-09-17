@@ -12,6 +12,18 @@ botaoAdicionar.addEventListener("click", function (event) {
 
     var pacienteTr = montaTr(paciente);
 
+    var erro = validaPaciente(paciente);
+    if(erro.length > 0){
+        var mensagemErro = document.querySelector("#mensagem-erro");
+        mensagemErro.textContent =  erro;
+        return; // se o paciente não for válido ele vai sair desse function do botaoAdicionar
+    }
+
+    // if(!validaPaciente(paciente)){
+    //     console.log("Paciente Inválido!");
+    //     return; // se o paciente não for válido ele vai sair desse function do botaoAdicionar
+    // }
+
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
@@ -49,7 +61,7 @@ function montaTr(paciente) {
 
     // função para colocar cada uma dessas TD's como filho da TR paciente;
     pacienteTr.appendChild(montaTd(paciente.nome, "info-nome"));
-    pacienteTr.appendChild(montaTd(paciente.pseo, "info-peso"));
+    pacienteTr.appendChild(montaTd(paciente.peso, "info-peso"));
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
@@ -65,5 +77,11 @@ function montaTd(dado, classe) {
     td.classList.add(classe);
 
     return td;
+}
+
+
+function validaPaciente(paciente){
+    if(validaPeso(paciente.peso)) return "";
+    else return "O peso é inválido";
 }
 

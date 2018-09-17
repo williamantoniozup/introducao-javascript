@@ -20,10 +20,10 @@ for (i = 0; i < pacientes.length; i++) {
     var peso = tdpeso.textContent;
     var altura = tdaltura.textContent;
 
-    var pesoEhValido = true;
-    var alturaEhValido = true;
+    var pesoEhValido = validaPeso(peso);
+    var alturaEhValido = validaAltura(altura);
 
-    if (peso <= 0 || peso >= 1000) {
+    if (!pesoEhValido) { //só entra se o valor é inválido 
         pesoEhValido = false;
         tdImc.textContent = "Peso Inválido";
         // paciente.style.color = "red";
@@ -31,7 +31,7 @@ for (i = 0; i < pacientes.length; i++) {
         paciente.classList.add("paciente-invalido");
     }
 
-    if (altura <= 0 || altura >= 3.00) {
+    if (!alturaEhValido) {
         alturaEhValido = false;
         tdImc.textContent = "Altura Inválida!";
         paciente.classList.add("paciente-invalido");  //adicionando style em algum elemento
@@ -61,6 +61,15 @@ titulo.addEventListener("click", function () {
 //     console.log("olá, eu fui clicado");
 // }
 
+function validaPeso(peso){
+    if(peso >= 0 && peso < 1000) return true;
+    else return false;
+}
+
+function validaAltura(altura){
+    if(altura >= 0 && altura <= 3.00) return true;
+    else return false;
+}
 
 function calculaImc(peso, altura) {
     var imc = 0;
