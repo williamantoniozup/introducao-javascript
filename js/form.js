@@ -12,10 +12,9 @@ botaoAdicionar.addEventListener("click", function (event) {
 
     var pacienteTr = montaTr(paciente);
 
-    var erro = validaPaciente(paciente);
-    if(erro.length > 0){
-        var mensagemErro = document.querySelector("#mensagem-erro");
-        mensagemErro.textContent =  erro;
+    var erros = validaPaciente(paciente);
+    if (erros.length > 0) {
+        exibeMensagensDeErro(erros);
         return; // se o paciente não for válido ele vai sair desse function do botaoAdicionar
     }
 
@@ -29,6 +28,9 @@ botaoAdicionar.addEventListener("click", function (event) {
     tabela.appendChild(pacienteTr);
 
     form.reset(); //limpa todos os campos do form
+
+    var mensagemDeErro = document.querySelector("#mensagens-erro");
+    mensagemDeErro.innerHTML = ""; //limpar ultimo conteudo das mensagens de erro.
 
 });
 
@@ -80,8 +82,30 @@ function montaTd(dado, classe) {
 }
 
 
-function validaPaciente(paciente){
-    if(validaPeso(paciente.peso)) return "";
-    else return "O peso é inválido";
+function validaPaciente(paciente) {
+
+    var erros = [];
+    if(paciente.nome.length == 0) erros.push("Adicione um nome!");
+    if (!validaPeso(paciente.peso)) erros.push("Peso Inválido!");
+    if (!validaAltura(paciente.altura)) erros.push("Altura Inválida!");
+    if(paciente.gordura.length == 0) erros.push("Adicione uma gordura!");
+    if(paciente.peso.length == 0) erros.push("Adicione um peso!");
+    if(paciente.altura.length == 0) erros.push("Adicione uma altura!");
+
+    return erros;
 }
 
+function exibeMensagensDeErro(erros){
+
+    var ul = document.querySelector("#mensagens-erro");
+    ul.innerHTML = "";
+
+    erros.forEach(function(erro){
+        var li = document.createElement("li");
+        li.classList.add("erro");
+        li.textContent = erro;
+        ul.appendChild(li);    
+    });
+
+    
+}
