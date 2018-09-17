@@ -106,6 +106,4 @@ function exibeMensagensDeErro(erros){
         li.textContent = erro;
         ul.appendChild(li);    
     });
-
-    
 }
