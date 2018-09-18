@@ -87,32 +87,32 @@ function montaTd(dado, classe) {
 function validaPaciente(paciente) {
 
     var erros = [];
-    if(paciente.nome.length == 0) erros.push("Adicione um nome!");
+    if (paciente.nome.length == 0) erros.push("Adicione um nome!");
     if (!validaPeso(paciente.peso)) erros.push("Peso Inválido!");
     if (!validaAltura(paciente.altura)) erros.push("Altura Inválida!");
-    if(paciente.gordura.length == 0) erros.push("Adicione uma gordura!");
-    if(paciente.peso.length == 0) erros.push("Adicione um peso!");
-    if(paciente.altura.length == 0) erros.push("Adicione uma altura!");
+    if (paciente.gordura.length == 0) erros.push("Adicione uma gordura!");
+    if (paciente.peso.length == 0) erros.push("Adicione um peso!");
+    if (paciente.altura.length == 0) erros.push("Adicione uma altura!");
 
     return erros;
 }
 
-function adicionaPacienteNaTabela(paciente){
+function adicionaPacienteNaTabela(paciente) {
     var pacienteTr = montaTr(paciente);
     var tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
 }
 
 
-function exibeMensagensDeErro(erros){
+function exibeMensagensDeErro(erros) {
 
     var ul = document.querySelector("#mensagens-erro");
     ul.innerHTML = "";
 
-    erros.forEach(function(erro){
+    erros.forEach(function (erro) {
         var li = document.createElement("li");
         li.classList.add("erro");
         li.textContent = erro;
-        ul.appendChild(li);    
+        ul.appendChild(li);
     });
 }

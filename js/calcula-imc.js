@@ -38,7 +38,7 @@ for (i = 0; i < pacientes.length; i++) {
     }
 
     if (pesoEhValido == true && alturaEhValido == true) {
-        var imc = calculaImc(peso,altura);
+        var imc = calculaImc(peso, altura);
         tdImc.textContent = imc;
     }
 
@@ -61,13 +61,13 @@ titulo.addEventListener("click", function () {
 //     console.log("olá, eu fui clicado");
 // }
 
-function validaPeso(peso){
-    if(peso >= 0 && peso < 1000) return true;
+function validaPeso(peso) {
+    if (peso >= 0 && peso < 1000) return true;
     else return false;
 }
 
-function validaAltura(altura){
-    if(altura >= 0 && altura <= 3.00) return true;
+function validaAltura(altura) {
+    if (altura >= 0 && altura <= 3.00) return true;
     else return false;
 }
 
