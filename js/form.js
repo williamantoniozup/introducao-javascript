@@ -23,6 +23,8 @@ botaoAdicionar.addEventListener("click", function (event) {
     //     return; // se o paciente não for válido ele vai sair desse function do botaoAdicionar
     // }
 
+    adicionaPacienteNaTabela(paciente);
+
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr);
@@ -94,6 +96,13 @@ function validaPaciente(paciente) {
 
     return erros;
 }
+
+function adicionaPacienteNaTabela(paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
+
 
 function exibeMensagensDeErro(erros){
 

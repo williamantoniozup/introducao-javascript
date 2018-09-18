@@ -15,7 +15,24 @@ botaoAdicionar.addEventListener("click",function(){
     xhr.open("GET",url); //configurando a conexao, ainda não enviei a requisição
     
     xhr.addEventListener("load",function(){ // quando sua resposta tiver carregada, executa uma função pra mim
-        console.log(xhr.responseText);
+        // console.log(xhr.responseText);
+        var resposta = xhr.responseText; // é um textão -- td como string
+        // console.log(typeof resposta);
+        console.log(resposta);
+
+        var pacientes = JSON.parse(resposta); // transformar em um array
+
+        console.log(pacientes);
+        console.log(typeof pacientes);
+
+        pacientes.forEach(function(paciente){
+            adicionaPacienteNaTabela(paciente);
+        });
+        /*Técnica de AJAX, fazer uma requisição de modo assíncrono, pois
+        ele não esta parando o fluxo do nosso javascript, ele não trava
+        meu javascript pra ir lá e buscar uma informação em outro site
+        basicamente, fazer requisições com seu javascript de modo 
+        assíncrono, sem precisar meu navegador */
     });
     
     xhr.send(); //para enviar a requisição
