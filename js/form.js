@@ -8,7 +8,7 @@ botaoAdicionar.addEventListener("click", function (event) {
 
     // pegando o conteudo dos inputs do form;
     paciente = obtemPacienteDoFormulario(form);
-    console.log(paciente);
+    // console.log(paciente);
 
     var pacienteTr = montaTr(paciente);
 
@@ -70,7 +70,7 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
 
-    console.log(pacienteTr);
+    // console.log(pacienteTr);
 
     return pacienteTr;
 }

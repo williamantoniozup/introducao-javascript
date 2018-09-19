@@ -20,20 +20,19 @@ botaoAdicionar.addEventListener("click", function () {
         if (xhr.status == 200) { //ocorreu td bem
             erroAjax.classList.add("invisivel");
             var resposta = xhr.responseText; // é um textão -- td como string
-            // console.log(typeof resposta);
-            console.log(resposta);
+            console.log(typeof resposta);
 
             var pacientes = JSON.parse(resposta); // transformar em um array
 
             console.log(pacientes);
-            console.log(typeof pacientes);
+            // console.log(typeof pacientes);
 
             pacientes.forEach(function (paciente) {
                 adicionaPacienteNaTabela(paciente);
             });
         } else {
-            console.log(xhr.status);
-            console.log(xhr.responseText);
+            // console.log(xhr.status);
+            // console.log(xhr.responseText);
             erroAjax.classList.remove("invisivel"); // mostra a mensagem de erro ao cliente
         }
 
